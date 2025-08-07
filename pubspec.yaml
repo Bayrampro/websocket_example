@@ -12,27 +12,34 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   flutter_dotenv: ^5.2.1
+  json_annotation: ^4.9.0
+  web_socket_channel: ^3.0.3
+  get_it: ^8.0.3
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.7
+  talker_flutter: ^4.9.3
+  go_router: ^16.0.0
+  talker_bloc_logger: ^4.9.3
+  flutter_svg: ^2.2.0
+  draggable_home: ^1.0.5
+  intl: ^0.20.2
+  rxdart: ^0.27.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  json_serializable: ^6.10.0
+  build_runner: ^2.6.0
 
 flutter:
   uses-material-design: true
 
   assets:
     - .env
+    - assets/img/
 
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: fonts/poppins_regular.ttf
