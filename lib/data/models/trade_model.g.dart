@@ -35,7 +35,7 @@ const _$EventTypeEnumMap = {
   EventType.trade: 'trade',
   EventType.aggTrade: 'aggTrade',
   EventType.kline: 'kline',
-  EventType.ticker: 'ticker',
+  EventType.ticker: '24hrTicker',
   EventType.bookTicker: 'bookTicker',
   EventType.depthUpdate: 'depthUpdate',
 };

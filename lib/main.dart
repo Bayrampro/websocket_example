@@ -6,12 +6,13 @@ import 'package:talker_flutter/talker_flutter.dart';
 import 'package:websocket_example/config/router/router.dart';
 import 'package:websocket_example/config/theme/app_theme.dart';
 import 'package:websocket_example/core/di/service_locator.dart';
+import 'package:websocket_example/presentation/bloc/ticker_bloc/ticker_bloc.dart';
 import 'package:websocket_example/presentation/bloc/trade_bloc/trade_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-  setupServiceLocator();
+  await setupServiceLocator();
   Bloc.observer = TalkerBlocObserver(talker: getIt.get<Talker>());
 
   runApp(const WebSocketExample());
@@ -25,6 +26,7 @@ class WebSocketExample extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<TradeBloc>(create: (context) => getIt.get<TradeBloc>()),
+        BlocProvider<TickerBloc>(create: (context) => getIt.get<TickerBloc>()),
       ],
       child: MaterialApp.router(
         title: 'Flutter Demo',

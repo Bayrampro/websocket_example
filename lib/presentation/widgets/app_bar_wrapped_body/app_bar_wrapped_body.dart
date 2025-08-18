@@ -8,12 +8,14 @@ class AppBarWrappedBody extends StatelessWidget {
     this.onPressed,
     required this.title,
     required this.headerWidget,
+    this.headerExpandedHeight = 0.3,
   });
 
   final List<Widget> body;
   final VoidCallback? onPressed;
   final String title;
   final Widget headerWidget;
+  final double headerExpandedHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class AppBarWrappedBody extends StatelessWidget {
     return DraggableHome(
       appBarColor: theme.colorScheme.primaryContainer,
       alwaysShowTitle: true,
-      headerExpandedHeight: 0.3,
+      headerExpandedHeight: headerExpandedHeight,
       curvedBodyRadius: 50,
       alwaysShowLeadingAndAction: true,
       physics: const ClampingScrollPhysics(),

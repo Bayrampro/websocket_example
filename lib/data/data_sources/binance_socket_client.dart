@@ -4,7 +4,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:websocket_example/core/constants/constants.dart';
 
 abstract interface class BinanceSocketClient {
-  void connectToStream(String stream);
+  void connectToStream(String stream, {bool isSingle = true});
   Stream<String> get stream;
   void disconnect();
   bool get isConnected;
@@ -15,8 +15,10 @@ class BinanceSocketClientImpl implements BinanceSocketClient {
   StreamController<String>? _controller;
 
   @override
-  void connectToStream(String stream) {
-    final url = "${Constants.baseUrl}$stream";
+  void connectToStream(String stream, {bool isSingle = true}) {
+    final url = isSingle
+        ? "${Constants.singleStreamUrl}$stream"
+        : "${Constants.multiStreamUrl}$stream";
 
     _channel = WebSocketChannel.connect(Uri.parse(url));
     _controller = StreamController<String>();

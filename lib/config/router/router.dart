@@ -3,16 +3,21 @@ import 'package:go_router/go_router.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 import 'package:websocket_example/core/di/service_locator.dart';
 import 'package:websocket_example/presentation/screens/tab_screen.dart';
+import 'package:websocket_example/presentation/screens/ticker_screen.dart';
 import 'package:websocket_example/presentation/screens/trades_screen.dart';
 
 class AppRouter {
   static final router = GoRouter(
     observers: [TalkerRouteObserver(getIt.get<Talker>())],
-    initialLocation: Routes.trades,
+    initialLocation: Routes.home,
     routes: [
       ShellRoute(
         builder: (context, state, child) => TabScreen(child: child),
         routes: [
+          GoRoute(
+            path: Routes.home,
+            builder: (context, state) => const TickerScreen(),
+          ),
           GoRoute(
             path: Routes.trades,
             builder: (context, state) => const TradesScreen(),

@@ -1,10 +1,10 @@
 part of 'trade_bloc.dart';
 
-abstract final class TradeBlocEvent extends Equatable {}
+sealed class TradeEvent extends Equatable {}
 
 // TradeStarted, TradeStopped
 
-final class TradeStarted extends TradeBlocEvent {
+final class TradeStarted extends TradeEvent {
   final String symbol;
 
   TradeStarted({required this.symbol});
@@ -13,11 +13,7 @@ final class TradeStarted extends TradeBlocEvent {
   List<Object?> get props => [symbol];
 }
 
-final class TradeStopped extends TradeBlocEvent {
-  final String symbol;
-
-  TradeStopped({required this.symbol});
-
+final class TradeStopped extends TradeEvent {
   @override
-  List<Object?> get props => [symbol];
+  List<Object?> get props => [];
 }

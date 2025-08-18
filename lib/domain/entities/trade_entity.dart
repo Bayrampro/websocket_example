@@ -1,3 +1,4 @@
+import 'package:websocket_example/data/models/event_type_enum.dart';
 import 'package:websocket_example/data/models/trade_model.dart';
 
 class TradeEntity {
