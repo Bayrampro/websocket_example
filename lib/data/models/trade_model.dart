@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:websocket_example/data/models/event_type_enum.dart';
 import 'package:websocket_example/domain/entities/trade_entity.dart';
 
 part 'trade_model.g.dart';
@@ -55,6 +56,3 @@ class TradeModel {
     );
   }
 }
-
-@JsonEnum()
-enum EventType { trade, aggTrade, kline, ticker, bookTicker, depthUpdate }

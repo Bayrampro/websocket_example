@@ -2,36 +2,40 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 import 'package:websocket_example/domain/entities/trade_entity.dart';
-import 'package:websocket_example/domain/repo/trade_repository.dart';
+import 'package:websocket_example/domain/repo/binance_repository.dart';
 
 part 'trade_event.dart';
 part 'trade_state.dart';
 
-class TradeBloc extends Bloc<TradeBlocEvent, TradeBlocState> {
-  final TradeRepository _repo;
+class TradeBloc extends Bloc<TradeEvent, TradeState> {
+  final BinanceRepository _repo;
+  final Talker _talkerLogger;
 
-  TradeBloc(this._repo) : super(TradeBlocInitial()) {
+  TradeBloc(this._repo, this._talkerLogger) : super(TradeBlocInitial()) {
     on<TradeStarted>(_onTradeStarted);
   }
 
   FutureOr<void> _onTradeStarted(
     TradeStarted event,
-    Emitter<TradeBlocState> emit,
+    Emitter<TradeState> emit,
   ) async {
     emit(TradeConnecting());
     try {
-      _repo.subscribeToTrades(event.symbol);
+      _repo.subscribeTo(event.symbol);
 
       await emit.forEach(
-        _repo.trades,
+        _repo.data,
         onData: (trade) => TradeReceived(trade: trade),
         onError: (error, stackTrace) {
-          return TradeError(message: "");
+          _talkerLogger.error("TradeBloc - _onTradeStarted", error, stackTrace);
+          return TradeError(message: "Error when fetching data...");
         },
       );
-    } catch (e) {
-      emit(TradeError(message: ""));
+    } catch (error, stackTrace) {
+      _talkerLogger.error("TradeBloc - _onTradeStarted", error, stackTrace);
+      emit(TradeError(message: "Error when fetching data..."));
     }
   }
 }

@@ -1,25 +1,25 @@
 part of 'trade_bloc.dart';
 
-abstract final class TradeBlocState extends Equatable {}
+sealed class TradeState extends Equatable {}
 
-final class TradeBlocInitial extends TradeBlocState {
+final class TradeBlocInitial extends TradeState {
   @override
   List<Object?> get props => [];
 }
 
 // TradeConnecting, TradeConnected, TradeReceived, TradeError, TradeDisconnected
 
-final class TradeConnecting extends TradeBlocState {
+final class TradeConnecting extends TradeState {
   @override
   List<Object?> get props => [];
 }
 
-final class TradeConnected extends TradeBlocState {
+final class TradeConnected extends TradeState {
   @override
   List<Object?> get props => [];
 }
 
-final class TradeReceived extends TradeBlocState {
+final class TradeReceived extends TradeState {
   final TradeEntity trade;
 
   TradeReceived({required this.trade});
@@ -28,7 +28,7 @@ final class TradeReceived extends TradeBlocState {
   List<Object?> get props => [trade];
 }
 
-final class TradeError extends TradeBlocState {
+final class TradeError extends TradeState {
   final String message;
 
   TradeError({required this.message});
@@ -37,7 +37,7 @@ final class TradeError extends TradeBlocState {
   List<Object?> get props => [message];
 }
 
-final class TradeDisconnected extends TradeBlocState {
+final class TradeDisconnected extends TradeState {
   @override
   List<Object?> get props => [];
 }

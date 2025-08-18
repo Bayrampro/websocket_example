@@ -6,14 +6,15 @@ final appTheme = ThemeData(
     seedColor: AppColors.primaryContainer,
     primaryContainer: AppColors.primaryContainer,
     secondaryContainer: AppColors.secondaryContainer,
+    surfaceContainer: AppColors.lightBlueButton,
     surface: AppColors.bodyColor,
+    error: AppColors.error,
+    tertiary: AppColors.disabled,
   ),
   scaffoldBackgroundColor: AppColors.bodyColor,
   shadowColor: AppColors.lettersAndIcons,
   hintColor: AppColors.blueButton,
-  appBarTheme: const AppBarTheme(
-    backgroundColor: AppColors.backgroundLightMode,
-  ),
+  appBarTheme: const AppBarTheme(backgroundColor: AppColors.primaryContainer),
   textTheme: const TextTheme(
     bodyLarge: TextStyle(
       fontFamily: 'Poppins',

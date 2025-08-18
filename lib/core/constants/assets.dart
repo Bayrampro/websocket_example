@@ -6,6 +6,10 @@ class Assets {
   static const String profileIcon = 'assets/img/profile_icon.svg';
   static const String arrowBackIcon = 'assets/img/arrow_back_icon.svg';
   static const String coinIcon = 'assets/img/coins_icon.svg';
-  static const String linkArrowIcon = 'assets/img/link_arrow.svg';
+  static const String linkArrowUpIcon = 'assets/img/link_arrow_up.svg';
+  static const String linkArrowDownIcon = 'assets/img/link_arrow_down.svg';
   static const String checkIcon = 'assets/img/check_icon.svg';
+  static const String bitcoinIcon = 'assets/img/bitcoin_icon.svg';
+  static const String bnbIcon = 'assets/img/bnb_icon.svg';
+  static const String ethIcon = 'assets/img/eth_icon.svg';
 }
